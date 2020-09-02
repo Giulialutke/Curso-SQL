@@ -1,0 +1,77 @@
+banco de dados nome : curso
+OPERADORES
+
+-- usando operador  =
+Select * from cidades 
+where uf = 'sp'
+
+Select * from cidades 
+where nome_mun = 'DOURADO'
+and UF = 'SP'
+
+-- usando operador  >
+select * from cidades
+where populacao > 100000
+
+-- usando operador  <
+select * from cidades
+where populacao < 100000
+
+--usando operador < = (menor e igual)
+select * from cidades
+where populacao < = 100000
+
+--usando operador < > (diferente)
+select * from cidades
+where uf  < > 'sp'
+and uf < > 'sc'
+
+--combinado operadores
+select * from  cidades
+Where populacao <= 100000
+and populacao >= 50000
+and uf = 'sp'
+and nome_mun <> 'vinhedo'
+
+Operadores matematicos
+
+select ((1+4) * (3*3))/5 + 10% 2
+
+banco de dados nome AdventureWorks2014
+
+select max (taxrate) maximo, min(taxrate) minimo, 
+Max(taxrate) - Min(taxrate) as ' tax rate difference'
+from sales.salestaxrate
+where stateprovinceid is not null;
+
+--Exemplo calculo de um novo preço para produto, pegando valor da tabela e realizando um aumento de 15%
+Select productid,
+name,
+listprice,
+listprice * 1.15 as NovoPreco
+from production.product
+where Name Like 'Mountain-%'
+order by productid ASC;
+
+
+---calculo de metas de vendas mensal da equipe de vendas em ciclo de 12 meses.
+select s.businessentityid as SalesPersonID,
+firstname,
+lastname,
+salesquota,
+salesquota / 12 as 'meta mensal'
+from sales.salesperson as s
+join humanresources.employee as e 
+on s.businessentityid = e.businessentityid
+Join person.person as p
+on e.businessentityid = p.businessentityid
+
+--apresenta o resulta conforme solicitado.
+
+select 38 / 5 as inteiro,
+38 % 5 as restante
+
+
+
+
+
