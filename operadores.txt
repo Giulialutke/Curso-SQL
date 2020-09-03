@@ -71,6 +71,54 @@ on e.businessentityid = p.businessentityid
 select 38 / 5 as inteiro,
 38 % 5 as restante
 
+Banco de dados Northwnd
+
+--Operador Where
+Select * from  customers
+Where country = 'Mexico';
+
+--Operador AND
+Select 
+      b.firstname,
+      b.lastname,
+      a.businessentityid,
+      a.loginid,
+      a.vacationhours
+From humanresources.employee a
+inner join person.person b on a.businessentityid=b.businessentityid
+where jobtitle = 'Marketing Assistant'
+and vacationhours > 41;
+
+--operador between
+
+select e.firstname,
+       e.lastname,
+	   ep.rate
+FROM humanresources.vemployee e
+join humanresources.employeepayhistory ep
+on e.businessentityid = ep.businessentityid
+where ep.rate between 27 and 30
+order by ep.rate;
+
+--operador IN (sub select)
+
+select p.firstname,
+       p.lastname,
+	   sp.salesquota
+FROM PERSON.PERSON as p
+join sales.salesperson AS sp
+on p.businessentityid = sp.businessentityid
+where p.businessentityid in (select p.businessentityid where salesquota > 250000);
+
+
+--operador not in	
+select p.firstname,
+       p.lastname,
+	   sp.salesquota
+FROM PERSON.PERSON as p
+join sales.salesperson AS sp
+on p.businessentityid = sp.businessentityid
+where p.businessentityid not in (select p.businessentityid where salesquota > 250000)
 
 
 
